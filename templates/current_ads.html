@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текущие объявления о продаже недвижимости</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .ads-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .ad-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 300px;
+            box-sizing: border-box;
+            text-align: left; /* Выравнивание текста по правому краю */
+        }
+        .ad-card h2 {
+            margin-top: 0;
+        }
+        .ad-card p {
+            margin: 10px 0;
+        }
+        /* Стили для статуса объявления */
+        .active {
+            color: green;
+        }
+        .inactive {
+            color: red;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Текущие объявления о продаже недвижимости</h1>
+        <div class="ads-container">
+            {% for ad in ads %}
+            <div class="ad-card">
+                <h2>ID: {{ loop.index0 }}</h2>
+                <p>Цена: {{ ad[0] }}</p>
+                <p>ID недвижимости: {{ ad[1] }}</p>
+                <p>Адрес владельца: {{ ad[2][-5:] }}</p>
+                {% if ad[3][-5:] == '00000' %}
+                    <p>Адрес покупателя: Не куплено</p>
+                {% else %}
+                    <p>Адрес покупателя: {{ ad[3][-5:] }}</p>
+                {% endif %}
+                <p>Дата: {{ ad[4] }}</p>
+                <!-- Применение стилей в зависимости от статуса объявления -->
+                {% if ad[5] %}
+                    <p class="active">Статус: Открыто</p>
+                {% else %}
+                    <p class="inactive">Статус: Закрыто</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="btn">На главную</a>
+    </div>
+</body>
+</html>

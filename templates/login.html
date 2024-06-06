@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <link rel="stylesheet" href={{ url_for("static", filename="style.css") }}>
+</head>
+<body>
+    <div class="container">
+        <h1>Авторизация</h1>
+        <form action="/login" method="post">
+            <label for="public_key">Публичный ключ:</label>
+            <input type="text" id="public_key" name="public_key" required value="{{ request.form.public_key if request.form.public_key else '' }}">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit" class="btn">Войти</button>
+            <!-- Помещаем блок с ошибкой под полями -->
+            {% if error %}
+            <div class="error-box">
+                <p>{{ error }}</p>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>

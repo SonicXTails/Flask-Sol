@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация успешна</title>
+    <link rel="stylesheet" href={{ url_for("static", filename="style.css") }}>
+</head>
+<body>
+    <div class="container">
+        <h1>Регистрация успешна</h1>
+        <div class="success-box">
+            <p style="color: green;">Ваш аккаунт успешно создан.</p> <!-- Перекрасили сообщение в зелёный цвет -->
+            <p>Публичный ключ:</p>
+            <div class="key-box">
+                <p>{{ account }}</p>
+            </div>
+        </div>
+        <a href="{{ url_for('login') }}" class="btn">Перейти к авторизации</a> <!-- Добавили кнопку перехода на экран авторизации -->
+    </div>
+</body>
+</html>

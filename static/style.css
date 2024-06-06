@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #0066ff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px; /* Устанавливаем одинаковый размер текста */
+}
+
+input[type="password"],
+input[type="text"],
+input[type="number"],
+select {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type="password"],
+input[type="text"],
+input[type="number"] {
+    width: calc(100% - 22px);
+}
+
+select {
+    width: 100%;
+}
+
+.estate {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.estate.active {
+    background-color: #8effa0; /* Green background for active estates */
+}
+
+.estate.inactive {
+    background-color: #ff8a8a; /* Red background for inactive estates */
+}
+
+.error-box {
+    background-color: #ffcccc;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}

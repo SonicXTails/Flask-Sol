@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменение статуса объявления</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Изменение статуса объявления</h1>
+        <form action="/update-ad" method="post">
+            <label for="ad_id">ID объявления:</label>
+            <input type="text" id="ad_id" name="ad_id" required><br><br>
+            
+            <label for="is_open">Открытое:</label>
+            <input type="checkbox" id="is_open" name="is_open" style="transform: scale(1.5);"><br><br>
+            
+            <button type="submit" class="btn">Обновить статус</button>
+            <a href="{{ url_for('dashboard') }}" class="btn">На главную</a>
+        </form>
+        {% if error %}
+        <p class="error-box">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

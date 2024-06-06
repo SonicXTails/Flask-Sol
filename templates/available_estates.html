@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доступные недвижимости</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .estate-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .estate {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: calc(50% - 10px); /* Ширина карточки */
+            box-sizing: border-box;
+        }
+        .estate h2 {
+            margin-top: 0;
+        }
+        .estate p {
+            margin: 10px 0;
+        }
+        /* Стили для статуса недвижимости */
+        .active {
+            color: green;
+        }
+        .inactive {
+            color: red;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Доступные недвижимости</h1>
+        <div class="estate-list">
+            {% for estate in estates %}
+            <div class="estate">
+                <h2>ID: {{ loop.index0 }}</h2> <!-- Выводим ID недвижимости -->
+                <h2>{{ estate[7] }}</h2>
+                <p>Адрес: {{ estate[0] }}</p>
+                <p>Площадь: {{ estate[1] }}</p>
+                <p>Тип: 
+                    {% if estate[2] == 0 %} Дом
+                    {% elif estate[2] == 1 %} Квартира
+                    {% elif estate[2] == 2 %} Лофт
+                    {% elif estate[2] == 3 %} Дача
+                    {% endif %}
+                </p>
+                <!-- Применение стилей в зависимости от статуса недвижимости -->
+                {% if estate[4] %}
+                    <p class="active">Статус: Активно</p>
+                {% else %}
+                    <p class="inactive">Статус: Неактивно</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('dashboard') }}" class="btn">На главную</a>
+    </div>
+</body>
+</html>

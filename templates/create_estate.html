@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание недвижимости</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Создание недвижимости</h1>
+        <form action="/create-estate" method="POST">
+            <label for="address">Адрес:</label>
+            <input type="text" id="address" name="address" required><br><br>
+            
+            <label for="square">Площадь:</label>
+            <input type="number" id="square" name="square" required><br><br>
+            
+            <label for="estate_type">Тип недвижимости:</label>
+            <select id="estate_type" name="estate_type" required>
+                <option value="0">Дом</option>
+                <option value="1">Квартира</option>
+                <option value="2">Лофт</option>
+                <option value="3">Дача</option>
+            </select><br><br>
+            
+            <input type="submit" value="Создать" class="btn">
+            <a href="{{ url_for('dashboard') }}" class="btn">На главную</a>
+        </form>
+
+        {% if error %}
+        <div class="error-box">
+            <p>{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

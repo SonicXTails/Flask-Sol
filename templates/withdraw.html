@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вывод средств</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0066ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .error-box {
+            background-color: #ffcccc;
+            color: #cc0000;
+            border: 1px solid #cc0000;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/withdraw" method="post">
+        <h1>Вывод средств</h1>
+        <br>
+        <input type="submit" value="Вывести средства" class="btn">
+        <a href="{{ url_for('dashboard') }}" class="btn">На главную</a>
+    </form>
+    <!-- Блок для вывода ошибки, если операция вывода средств не удалась -->
+    {% if error %}
+    <div class="error-box">
+        {{ error }}
+    </div>
+    {% endif %}
+</body>
+</html>

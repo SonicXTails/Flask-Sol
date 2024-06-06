@@ -1,0 +1,72 @@
+</DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Покупка недвижимости</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0066ff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .text-field {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .text-field:focus {
+            outline: none;
+            border-color: #0066ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Покупка недвижимости</h1>
+        <form action="/buy-estate" method="post">
+            <label for="ad_id">ID объявления:</label><br>
+            <input type="text" id="ad_id" name="ad_id" class="text-field"><br><br>
+            <input type="submit" value="Купить" class="btn">
+            <a href="{{ url_for('dashboard') }}" class="btn">На главную</a>
+        </form>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="messages">
+                {% for category, message in messages %}
+                    <p class="error-box">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    </div>
+</body>
+</html>

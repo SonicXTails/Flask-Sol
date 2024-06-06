@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .welcome-message {
+            font-size: 36px; /* Увеличил размер текста */
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(rgb(140, 0, 255), #0066ff); /* Градиентный фон */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; 
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .section-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: blue; /* Цвет заголовка */
+        }
+        .section-header-green {
+            color: green; /* Цвет заголовка для Недвижимости */
+        }
+        .section-header-red {
+            color: red; /* Цвет заголовка для Объявлений */
+        }
+        .section-header-blue {
+            color: #0066ff; /* Цвет заголовка для Покупки и финансов */
+        }
+        .btn-green {
+            background-color: green; /* Цвет кнопок для Недвижимости */
+        }
+        .btn-red {
+            background-color: red; /* Цвет кнопок для Объявлений */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="welcome-message">Добро пожаловать в агентство недвижимости, {{ shortened_account }}!</h1>
+        <h2>Панель управления</h2>
+
+        <div class="section">
+            <h3 class="section-header section-header-green">Недвижимость</h3>
+            <a href="/create-estate" class="btn btn-green">Создать</a>
+            <a href="/update-estate" class="btn btn-green">Изменить статус</a>
+            <a href="/available-estates" class="btn btn-green">Получить информацию</a>
+        </div>
+
+        <div class="section">
+            <h3 class="section-header section-header-red">Объявления</h3>
+            <a href="/create-ad" class="btn btn-red">Создать</a>
+            <a href="/update-ad" class="btn btn-red">Изменить статус</a>
+            <a href="/current-ads" class="btn btn-red">Получить информацию</a>
+        </div>
+
+        <div class="section">
+            <h3 class="section-header section-header-blue">Покупка и финансы</h3>
+            <a href="/buy-estate" class="btn">Купить</a>
+            <a href="/withdraw" class="btn">Вывести средства</a>
+            <a href="/contract-balance" class="btn">Баланс смарт-контракта</a>
+            <a href="/account-balance" class="btn">Баланс аккаунта</a>
+            <a href="/logout" class="btn">Выйти</a>
+        </div>
+    </div>
+</body>
+</html>
